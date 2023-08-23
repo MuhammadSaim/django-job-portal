@@ -484,4 +484,10 @@ pip-selfcheck.json
 .idea
 .vscode
 
+
+assets
+mix-manifest.json
+.modernizrrc
+
+
 # End of https://www.toptal.com/developers/gitignore/api/pycharm+all,virtualenv,jetbrains+all,django,node,visualstudiocode

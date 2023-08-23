@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--== Google Fonts ==-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    {#  bootstrap  #}
+    <link rel="stylesheet" href="{% static 'public/css/bootstrap.min.css' %}">
+    {#  Icofont icon css  #}
+    <link rel="stylesheet" href="{% static 'public/css/icofont.css' %}">
+    {#  Swiper CSS  #}
+    <link rel="stylesheet" href="{% static 'public/css/swiper.min.css' %}">
+    {#  Fancybox Min CSS  #}
+    <link rel="stylesheet" href="{% static 'public/css/fancybox.min.css' %}">
+    {#  AOS   #}
+    <link rel="stylesheet" href="{% static 'public/css/aos.min.css' %}">
+
+    {#  main stylesheet  #}
+    <link rel="stylesheet" href="{% static 'public/css/style.css' %}">
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        {% include 'partials/public/header.html' %}
+
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        {% include 'partials/public/footer.html' %}
+
+        {% include 'partials/public/aside_menu.html' %}
+
+    </div>
+
+
+    {#  Modernizr  #}
+    <script src="{% static 'public/js/modernizr.js' %}"></script>
+    {#  jQuery Min Js  #}
+    <script src="{% static 'public/js/jquery-main.js' %}"></script>
+    {#  jQuery Migration Min Js  #}
+    <script src="{% static 'public/js/jquery-migrate.js' %}"></script>
+    {#  jQuery Popper Min Js  #}
+    <script src="{% static 'public/js/popper.min.js' %}"></script>
+    {#  bootstrap  #}
+    <script src="{% static 'public/js/bootstrap.min.js' %}"></script>
+    {#  jQuery Swiper Min Js  #}
+    <script src="{% static 'public/js/swiper.min.js' %}"></script>
+    {#  Fancybox Min Js  #}
+    <script src="{% static 'public/js/fancybox.min.js' %}"></script>
+    {#  jQuery AOS Min Js  #}
+    <script src="{% static 'public/js/aos.min.js' %}"></script>
+    {#  jQuery Counterup Min Js  #}
+    <script src="{% static 'public/js/counterup.js' %}"></script>
+    {#  jQuery Waypoints Js  #}
+    <script src="{% static 'public/js/waypoint.js' %}"></script>
+
+    {# Custom Js  #}
+    <script src="{% static 'public/js/custom.js' %}"></script>
+</body>
+</html>

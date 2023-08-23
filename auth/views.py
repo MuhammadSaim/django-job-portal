@@ -4,8 +4,8 @@ from django.http import HttpResponse
 
 # Create your views here.
 def login_view(request):
-    return HttpResponse('Login page')
+    return render(request, 'public/auth/login.html')
 
 
 def register_view(request):
-    return HttpResponse('Register page')
+    return render(request, 'public/auth/register.html')
