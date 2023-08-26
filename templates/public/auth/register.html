@@ -40,72 +40,70 @@
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                   <div class="tab-pane fade show active" id="candidate" role="tabpanel" aria-labelledby="candidate-tab">
-                    <form action="#">
+                    <form action="{% url 'auth.register.candidate' %}" method="post" class="ajax-form">
                       <div class="row">
                         <div class="col-12">
                           <div class="form-group">
-                            <input class="form-control" type="email" placeholder="Email">
+                            <input id="username" name="username" class="form-control" type="text" placeholder="Username">
+                            <p class="invalid-feedback username-feedback"></p>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <input class="form-control" type="password" placeholder="Password">
+                            <input id="email" name="email" class="form-control" type="email" placeholder="Email">
+                              <p class="invalid-feedback email-feedback"></p>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <input class="form-control" type="password" placeholder="Confirm Password">
+                            <input id="password" name="password" class="form-control" type="password" placeholder="Password">
+                              <p class="invalid-feedback password-feedback"></p>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <div class="remember-forgot-info">
-                              <div class="remember">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1">Aaccept our terms and conditions and privacy policy.</label>
-                              </div>
-                            </div>
+                            <input id="password_confirm" name="password_confirm" class="form-control" type="password" placeholder="Confirm Password">
+                              <p class="invalid-feedback password_confirm-feedback"></p>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <button type="button" class="btn-theme">Register Now</button>
+                            <button type="submit" class="btn-theme">Register Now</button>
                           </div>
                         </div>
                       </div>
                     </form>
                   </div>
                   <div class="tab-pane fade" id="employer" role="tabpanel" aria-labelledby="employer-tab">
-                    <form action="#">
+                    <form action="{% url 'auth.register.employer' %}" method="post" class="ajax-form">
                       <div class="row">
                         <div class="col-12">
                           <div class="form-group">
-                            <input class="form-control" type="email" placeholder="Email">
+                            <input id="username" name="username" class="form-control" type="text" placeholder="Username">
+                              <p class="username-feedback invalid-feedback"></p>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <input class="form-control" type="password" placeholder="Password">
+                            <input id="email" name="email" class="form-control" type="email" placeholder="Email">
+                              <p class="email-feedback invalid-feedback"></p>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <input class="form-control" type="password" placeholder="Confirm Password">
+                            <input id="password" name="password" class="form-control" type="password" placeholder="Password">
+                              <p class="password-feedback invalid-feedback"></p>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <div class="remember-forgot-info">
-                              <div class="remember">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1">Aaccept our terms and conditions and privacy policy.</label>
-                              </div>
-                            </div>
+                            <input id="password_confirm" name="password_confirm" class="form-control" type="password" placeholder="Confirm Password">
+                              <p class="password_confirm-feedback invalid-feedback"></p>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="form-group">
-                            <button type="button" class="btn-theme">Register Now</button>
+                            <button type="submit" class="btn-theme">Register Now</button>
                           </div>
                         </div>
                       </div>

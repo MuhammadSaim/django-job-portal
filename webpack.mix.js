@@ -13,7 +13,7 @@ mix.copyDirectory('./src/public', './assets/public/');
 
 
 // common files for dashboard and public site
-mix.js('./src/common/js/app.js', './assets/common/common.js');
+mix.js('./src/common/js/app.js', './assets/common/js/common.js');
 
 
 mix.disableNotifications();
