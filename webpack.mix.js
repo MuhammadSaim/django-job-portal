@@ -9,9 +9,11 @@ mix.options({
 });
 
 
-mix.copyDirectory('./src/public', './assets/public/')
+mix.copyDirectory('./src/public', './assets/public/');
 
 
+// common files for dashboard and public site
+mix.js('./src/common/js/app.js', './assets/common/common.js');
 
 
 mix.disableNotifications();

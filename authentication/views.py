@@ -9,3 +9,7 @@ def login_view(request):
 
 def register_view(request):
     return render(request, 'public/auth/register.html')
+
+
+def job_lists(request):
+    return render(request, 'public/jobs/list.html')
