@@ -1,6 +1,12 @@
+// require jquery
 window.$ = window.jQuery = require("jquery");
 
+// nice toast css https://www.jqueryscript.net/other/alert-nice-toast.html
+import "../../libs/nice-toast/js/nice-toast-js";
 
+
+
+// setup ajax setup for CSRF Token in all ajax request
 $.ajaxSetup({
     headers: {
         'X-CSRFToken': $('meta[name="csrf-token"]').attr('content')
@@ -8,9 +14,34 @@ $.ajaxSetup({
 });
 
 
+// add notification to the window object to available all over the application
 window.notification = (
-
+    message,
+    type = 'info',
+    pos = 'top-right',
+    duration = 2000
 ) => {
+
+    $.niceToast.setup({
+        position: pos,
+        timeout: duration,
+    });
+
+    if (type === 'info'){
+        $.niceToast.info(message);
+    }
+
+    if(type === 'warning'){
+        $.niceToast.warning(message);
+    }
+
+    if(type === 'error'){
+        $.niceToast.error(message);
+    }
+
+    if(type === 'success'){
+        $.niceToast.success(message);
+    }
 
 };
 
@@ -54,8 +85,9 @@ $(".ajax-form").on('submit', function (e) {
                 });
             } else {
                 if(data.error){
-
+                    notification(data.messages, 'error');
                 }else{
+                    notification(data.messages, 'success');
                     $(this).trigger("reset");
                     if (is_refresh) {
                         setTimeout(function () {
@@ -63,7 +95,7 @@ $(".ajax-form").on('submit', function (e) {
                         }, 2500);
                     }
                     if (is_redirect) {
-                        notification("Redirecting...", "dark");
+                        notification("Redirecting...");
                         setTimeout(() => {
                             location.href = data.redirect_url;
                         }, 3000);
