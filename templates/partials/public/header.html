@@ -18,9 +18,18 @@
                   <li><a href="#"><span>Home</span></a></li>
                   <li><a href="#"><span>Find Jobs</span></a></li>
                   <li><a href="#"><span>Companies</span></a></li>
+                    {% if user.is_authenticated %}
+                      <li class="has-submenu"><a href="#/"><span>{{ user.get_username }}</span></a>
+                        <ul class="submenu-nav">
+                          <li><a href="candidate.html"><span>Profile</span></a></li>
+                          <li><a href="{% url 'auth.logout' %}"><span>Logout</span></a></li>
+                        </ul>
+                      </li>
+                    {% endif %}
                 </ul>
               </div>
             </div>
+          {% if not user.is_authenticated %}
             <div class="header-align-end">
               <div class="header-action-area">
                 <a class="btn-registration" href="{% url 'auth.register' %}"><span>+</span> Register/Login</a>
@@ -29,6 +38,7 @@
                 </button>
               </div>
             </div>
+          {% endif %}
           </div>
         </div>
       </div>

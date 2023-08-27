@@ -1,16 +1,49 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from helpers.helpers import is_ajax
 from django.http import JsonResponse
 from validations.register_form import RegisterForm
-from django.contrib.auth import get_user_model
+from validations.login_form import LoginForm
+from django.contrib.auth import get_user_model, authenticate, login, logout
+from django.urls import reverse
 
 
-# Create your views here.
+# login view for the user and submitting form will authenticate the user
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('public.home')
+    if is_ajax(request) and request.method == 'POST':
+        login_validate = LoginForm(request.POST)
+        validation_status = login_validate.validate()
+        if validation_status:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return JsonResponse({
+                    'error': False,
+                    'form': False,
+                    'redirect_url': reverse('auth.register'),
+                    'messages': 'You are login successfully.'
+                })
+            else:
+                return JsonResponse({
+                    'error': True,
+                    'form': False,
+                    'messages': 'Invalid username or password'
+                })
+        else:
+            return JsonResponse({
+                'error': True,
+                'form': True,
+                'messages': login_validate.get_message_plain()
+            })
     return render(request, 'public/auth/login.html')
 
 
 def register_view(request):
+    if request.user.is_authenticated:
+        return redirect('public.home')
     return render(request, 'public/auth/register.html')
 
 
@@ -42,7 +75,7 @@ def register_candidate(request):
             return JsonResponse({
                 'error': True,
                 'form': True,
-                'messages': register_validate.get_message()
+                'messages': register_validate.get_message_plain()
             })
 
 
@@ -77,3 +110,10 @@ def register_employer(request):
                 'form': True,
                 'messages': register_validate.get_message()
             })
+
+
+def logout_view(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect('auth.login')
+    return redirect('public.home')
